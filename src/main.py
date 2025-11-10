@@ -3,11 +3,19 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
+call_count = 0
+
+
 
 @app.get("/")
 def root():
+    global call_count
+    call_count += 1
     return {"Hello": "World"}
 
+@app.get("/called_count")
+def called_count():
+    return {"called_count": call_count}
 
 def main():
     import uvicorn

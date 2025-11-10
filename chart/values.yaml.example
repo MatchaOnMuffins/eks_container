@@ -1,0 +1,13 @@
+replicaCount: 2
+
+image:
+  repository: <account_id>.dkr.ecr.<region>.amazonaws.com/<repo>
+  tag: "latest"
+  pullPolicy: IfNotPresent
+
+service:
+  scheme: "internet-facing"
+  acmArn: "arn:aws:acm:<region>:<account_id>:certificate/<acm_id>"
+  type: LoadBalancer
+  port: 443
+  targetPort: 8000
